@@ -1,0 +1,22 @@
+{
+  "name": "clearcode-task",
+  "version": "1.0.0",
+  "description": "Task for a Junior Front-end Dev",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Laylan/Clearcode-task.git"
+  },
+  "keywords": [
+    "task"
+  ],
+  "author": "Anna",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Laylan/Clearcode-task/issues"
+  },
+  "homepage": "https://github.com/Laylan/Clearcode-task#readme"
+}
