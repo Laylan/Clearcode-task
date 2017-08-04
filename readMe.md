@@ -1,4 +1,4 @@
-Junior Front-end Dev App
+Junior Front-end Dev App \n
 Shows articles from Reddit.com
 
 To start a serwer:
