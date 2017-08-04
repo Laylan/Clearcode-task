@@ -1,5 +1,5 @@
 <div class="list-group">
-  <div class="list-group-item" ng-repeat="article in reddit.reddits">
+  <button class="list-group-item" ng-repeat="article in reddit.reddits">
     <div class="media">
       <div class="media-left">
         <a href="#">
@@ -7,9 +7,9 @@
         </a>
       </div>
       <div class="media-body">
-        <h4>title: {{article.data.title}}</h4>
+        <h4>{{article.data.title}}</h4>
         <p> author: {{article.data.author}}</p>
       </div>
     </div>
-  </div>
+  </button>
 </div>
