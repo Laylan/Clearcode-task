@@ -1,34 +1,33 @@
 (function (){
   var app = angular.module('app-directives', []);
-    console.log("app-directives111");
 
   app.directive("articlesView", function () {
     console.log("app-directives");
-    var articles = [
+    var articlesss = [
       {
         title : 'Dogs',
-        content : 'Whoof, Whoof, Whoof',
-      },
+        author : 'Whoof, Whoof, Whoof',
+     },
       {
         title: "Cats",
-        content: "Miau Miau",
+        author: "Miau Miau",
       }
     ];
-
     return {
       restrict: "E",
       templateUrl: "views/articles-view.html",
-      controller: function($scope, $http) {
-        // $http.get("http://www.reddit.com/r/subreddit/new.json?sort=new")
-        // .success(function(response) {
-        //   console.log("http get success");
-        //   console.log($scope);
-        // })
-        // .error(function(returnData) {
-        //   console.log("error Http", returnData);
-        // });
-        //console.log("articles Ctrl");
-        //this.articles = articles;
+      controller: function($http) {
+        //this.reddits = articlesss;
+        var vm = this;
+        vm.reddits = [];
+        $http.get("http://www.reddit.com/new.json?sort=new")
+        .then(function FetchNewReddits(returnedData) {
+          console.log(returnedData.data.data.children);
+          vm.reddits = returnedData.data.data.children;
+        },
+        function FetchNewRedditsError(error) {
+         console.log(error);
+       });
       },
       controllerAs: "reddit",
     };
