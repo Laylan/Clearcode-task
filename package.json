@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/Laylan/Clearcode-task/issues"
   },
-  "homepage": "https://github.com/Laylan/Clearcode-task#readme"
+  "homepage": "https://github.com/Laylan/Clearcode-task#readme",
+  "dependencies": {
+    "jquery": "^3.2.1"
+  }
 }
