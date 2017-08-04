@@ -1,17 +1,19 @@
 (function(){
   var app = angular.module('myRedditApp', ['app-directives']);
 console.log("articles Ctrl11");
-  app.controller('RedditController', function($scope, $http){
+  app.controller('RedditController',['$scope' ,'$http', '$log', function($scope, $http, $log){
     console.log("reddits Ctrl");
-    $http.get("https://www.reddit.com/r/pics/new.json?sort=new&limit=100")
-    .success(function(response) {
+    $http.get("http://www.reddit.com/new.json?sort=new")
+    .then(function(success) {
       console.log("http get success");
       console.log($scope);
-    })
-    .error(function(returnData) {
-      console.log("error Http", returnData);
+      console.log($log);
+      console.log(success);
     });
-  });
+    // .error(function(returnData) {
+    //   console.log("error Http", returnData);
+    // });
+  } ]);
   //
   // var articles = [
   //   {
