@@ -1,4 +1,4 @@
-<div class="panel panel-info">
+<div class="panel panel-info panel-margin">
   <div class="panel-heading">
     <h1>Reddit Newest Articles</h1>
   </div>
@@ -11,16 +11,22 @@
   <div class="list-group">
     <button class="list-group-item" ng-click="showArticle(article)" ng-repeat="article in reddit.reddits">
       <div class="media">
-        <div class="media-left">
+        <div class="media-left media-middle">
           <a href="#">
-            <img class="media-object" ng-src="{{article.data.thumbnail}}">
+            <img class="media-object max-size" ng-src="{{article.data.thumbnail}}" onerror="this.src='img/default-image.jpg'">
           </a>
         </div>
         <div class="media-body">
-          <h4><b>{{article.data.title}}</b></h4>
-          <p> author: {{article.data.author}}</p>
+          <h3 class="margin-zero">{{article.data.title}}</h3>
+          <h4> author: {{article.data.author}}</h4>
+          <h5> domain: {{article.data.domain}}</h5>
         </div>
       </div>
     </button>
+  </div>
+  <div class="panel-footer">
+    <b> Author: Laylan </b>
+    <br>
+    <a href="https://github.com/Laylan"> Link to gitHub</a>
   </div>
 </div>

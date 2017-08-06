@@ -1,3 +1,16 @@
+.panel-margin {
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+.max-size {
+  max-width: 10em;
+  max-height: 10em;
+}
+
+.margin-zero {
+  margin-top: 0px;
+}
 .comment {
   max-width: 97%;
   height: 7em;

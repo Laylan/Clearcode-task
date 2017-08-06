@@ -14,8 +14,8 @@
     }
 
   });
-  app.controller("ArticlesCtrl", ['$scope', '$http', '$location', '$routeParams', 'paramsService',
-  function($scope, $http, $location, $routeParams, paramsService) {
+  app.controller("ArticlesCtrl", ['$scope', '$http', '$location', '$window','$routeParams', 'paramsService',
+  function($scope, $http, $location, $window, $routeParams, paramsService) {
   //this.reddits = articlesss;
     var vm = this;
     vm.reddits = [];
@@ -32,6 +32,8 @@
     $scope.showArticle = function(article) {
      console.log("Change view func");
      paramsService.setParam(article);
+     $window.localStorage.setItem(article, article);
+     console.log($window.localStorage.getItem(article));
      console.log(paramsService);
      $scope.isArticle = true;
      $location.url('/views/article-view');
