@@ -1,11 +1,13 @@
 <div class="panel panel-info">
   <!-- Default panel contents -->
   <div class="panel-heading">
-    <h1>Article</h1>
+    <h1>{{view.article.data.title}}</h1>
   </div>
   <div class="panel-body">
-    <b> Title, author, content of article
-      (trzeba tutaj dać znacznik "article" i zoabczyć jak to będzie wyglądało) </b>
+    <b> {{view.article.data.title}} </b>
+    <article ng-show="view.article.data.selftext">
+      <p> {{view.article.data.selftext}}</p>
+    </article>
   </div>
   <button ng-click="backToArticles()">Back to Main View</button>
 </div>

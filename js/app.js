@@ -6,6 +6,7 @@
         .when('/views/article-view', {
           templateUrl: '/views/article-view.html',
           controller: 'ArticleCtrl',
+          controllerAs: 'view'
         })
         .when('/views/articles-view', {
           templateUrl: '/views/articles-view.html',
@@ -18,5 +19,5 @@
       }
     ]);
 
-    
+
 })();

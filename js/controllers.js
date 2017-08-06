@@ -2,15 +2,14 @@
   var app = angular.module('appControllers', ['ngRoute']);
 
   app.factory('paramsService', function(){
-    var article_url = "url";
-    this.article_url = article_url;
+  var self = this;
+    self.article = {};
 return {
   getParam: function() {
-    return this.article_url;
+    return self.article;
   },
   setParam: function(value) {
-      this.article_url = value;
-    return article_url;
+      self.article = value;
   }
 }
 
@@ -32,7 +31,8 @@ return {
 
     $scope.showArticle = function(article) {
      console.log("Change view func");
-     var url = article.data.permalink;
+     paramsService.setParam(article);
+     console.log(paramsService);
      $scope.isArticle = true;
      $location.url('/views/article-view');
     };
@@ -42,22 +42,19 @@ return {
   function($scope,$http, $location, paramsService) {
     var vm = this;
     vm.article = {};
-    var article_url = paramsService.getParam();
-    // "https://www.reddit.com" + article_url
-  //  https://www.reddit.com/r/CarFans/comments/6rzq54/1969_alfa_romeo_giulia_super_2l_my_new_dream_car.json
-    $http.get("http://voebeheard.com/wh%d0%b5n-d%d0%be-%d1%83%d0%beu-kn%d0%bew-is-th%d0%b5-right-time-t%d0%be-quit-y%d0%beur-j%d0%beb-and-g%d0%be-full-tim%d0%b5.json")
-    .then(function FetchNewReddits(returnedData) {
-      console.log(returnedData);
-    //  vm.reddits = returnedData.data.data.children;
-    },
-    function FetchNewRedditsError(error) {
-     console.log(error);
-     alert("No acces to this article!");
-    });
+    vm.msg = "";
+    vm.article = paramsService.getParam();
+    console.log(vm.article);
+    if(vm.article.data.domain === "self.Articles") {
+      vm.msg = "";
+    }
+    else {
+        vm.msg = "This is an article in external domain. You can see the article using a link below.";
+    }
+
 
     $scope.backToArticles = function () {
       console.log("Back to main view");
-
       $location.url('/views/articles-view');
     }
   }]);
