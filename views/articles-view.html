@@ -1,15 +1,26 @@
-<div class="list-group">
-  <button class="list-group-item" ng-repeat="article in reddit.reddits">
-    <div class="media">
-      <div class="media-left">
-        <a href="#">
-          <img class="media-object" ng-src="{{article.data.thumbnail}}">
-        </a>
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h1>Reddit Newest Articles</h1>
+  </div>
+  <div class="panel-body">
+    <b>  Application shows Reddit's the newest articles.<br>
+      You can click on it and read the whole article.<br>
+      There is a place to comment articles but unfortunately it doesn't really send it the to the serwer.
+    </b>
+  </div>
+  <div class="list-group">
+    <button class="list-group-item" ng-click="showArticle()" ng-repeat="article in reddit.reddits">
+      <div class="media">
+        <div class="media-left">
+          <a href="#">
+            <img class="media-object" ng-src="{{article.data.thumbnail}}">
+          </a>
+        </div>
+        <div class="media-body">
+          <h4><b>{{article.data.title}}</b></h4>
+          <p> author: {{article.data.author}}</p>
+        </div>
       </div>
-      <div class="media-body">
-        <h4>{{article.data.title}}</h4>
-        <p> author: {{article.data.author}}</p>
-      </div>
-    </div>
-  </button>
+    </button>
+  </div>
 </div>

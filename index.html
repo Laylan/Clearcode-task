@@ -12,23 +12,16 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/angular.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular-route.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="js/articles.js"></script>
   </head>
   <body>
-    <div class="panel  panel-info">
+    
       <!-- Default panel contents -->
-      <div class="panel-heading">
-        <h1>Reddit Newest Articles</h1>
-      </div>
-        <div class="panel-body">
-          <b>  Application shows Reddit's the newest articles.<br>
-            You can click on it and read the whole article.<br>
-            There is a place to comment articles but unfortunately it doesn't really send it the to the serwer.
-          </b>
-        </div>
-        <articles-view></articles-view>
-      </div>
+      <!-- <articles-view ng-hide="isArticle"></articles-view> -->
+      <ng-view></ng-view>
+
   </body>
 </html>
