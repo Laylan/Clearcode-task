@@ -1,13 +1,31 @@
 <div class="panel panel-info">
   <!-- Default panel contents -->
   <div class="panel-heading">
-    <h1>{{view.article.data.title}}</h1>
+    <h1>Article view</h1>
   </div>
   <div class="panel-body">
-    <b> {{view.article.data.title}} </b>
+    <h2>
+      <b> {{view.article.data.title}} </b>
+    </h2>
     <article ng-show="view.article.data.selftext">
       <p> {{view.article.data.selftext}}</p>
     </article>
+    <div ng-hide="view.article.data.selftext">
+      <div class="alert alert-warning">
+        {{view.msg}}
+        <a href="{{view.article.data.url}}"> Link to article</a>
+      </div>
+
+    </div>
+    <!-- <div class="panel panel-default"> -->
+      <!-- <div class="panel-body"> -->
+        <form class="panel panel-default margin-out">
+          <input type="text" class="form-control comment margin-min" placeholder="Write a comment">
+          <input type="text" class="form-control margin-min user-in" placeholder="Username">
+          <input type="submit" class="btn btn-success send-btn">
+        </form>
+      <!-- </div> -->
+    <!-- </div> -->
   </div>
-  <button ng-click="backToArticles()">Back to Main View</button>
+  <button class="btn btn-primary back-btn" ng-click="backToArticles()">Back to Main View</button>
 </div>

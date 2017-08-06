@@ -2,16 +2,16 @@
   var app = angular.module('appControllers', ['ngRoute']);
 
   app.factory('paramsService', function(){
-  var self = this;
-    self.article = {};
-return {
-  getParam: function() {
-    return self.article;
-  },
-  setParam: function(value) {
-      self.article = value;
-  }
-}
+    var self = this;
+    //self.article = {};
+    return {
+      getParam: function() {
+        return self.article;
+      },
+      setParam: function(value) {
+          self.article = value;
+      }
+    }
 
   });
   app.controller("ArticlesCtrl", ['$scope', '$http', '$location', '$routeParams', 'paramsService',
@@ -45,13 +45,9 @@ return {
     vm.msg = "";
     vm.article = paramsService.getParam();
     console.log(vm.article);
-    if(vm.article.data.domain === "self.Articles") {
-      vm.msg = "";
-    }
-    else {
-        vm.msg = "This is an article in external domain. You can see the article using a link below.";
-    }
-
+    if(!vm.article.data.selfText) {
+        vm.msg = "This is an article in external domain. You can see the article using a link:";
+    };
 
     $scope.backToArticles = function () {
       console.log("Back to main view");
