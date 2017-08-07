@@ -19,3 +19,4 @@ Project Description:
   - app.js (main functionality of app - main module of app)
   - controllers.js (contains two controllers of app one for list of articles and one to controle the view of specific article)
   - service.js (contains the factory 'paramsService' which help the send objects between controllers)
+- folders cointains minified files which will be usefull to minify all project in future
