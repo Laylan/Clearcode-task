@@ -12,3 +12,10 @@ App uses:
 - Bootstrap
 - AbgularJS
 - jQuery
+
+Project Description:
+- folder views contain view of all articles (articles-view.html) and view of a specific article(article-view.html)
+- folder js contain basic js files like angular.js, boostrap.js and also
+  - app.js (main functionality of app - main module of app)
+  - controllers.js (contains two controllers of app one for list of articles and one to controle the view of specific article)
+  - service.js (contains the factory 'paramsService' which help the send objects between controllers)

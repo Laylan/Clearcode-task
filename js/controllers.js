@@ -1,30 +1,6 @@
 (function (){
-  var app = angular.module('appControllers', ['ngRoute']);
+  var app = angular.module('appControllers', ['ngRoute', 'appService']);
 
-  app.factory('paramsService', function(){
-    var self = this;
-    //self.article = {};
-    return {
-      getParam: function() {
-        return self.article;
-      },
-      setParam: function(value) {
-          self.article = value;
-      },
-      setPage: function(articles, page) {
-        self.articles = articles;
-        self.page = page;
-      },
-      getArticles: function() {
-        return self.articles;
-      },
-      getPage: function() {
-        console.log(self.page);
-        return self.page;
-      }
-    }
-
-  });
   app.controller("ArticlesCtrl", ['$scope', '$http', '$location', '$window','$routeParams', 'paramsService',
   function($scope, $http, $location, $window, $routeParams, paramsService) {
   //this.reddits = articlesss;
@@ -43,6 +19,7 @@
         vm.reddits = returnedData.data.data.children;
       },
       function FetchNewRedditsError(error) {
+        alert("Error! See the console");
        console.log(error);
       });
     }
@@ -52,9 +29,6 @@
      paramsService.setParam(article);
      paramsService.setPage(vm.reddits, vm.page);
      this.article = article;
-    //  $window.localStorage.setItem(title, this.article.data.title);
-    //  $window.localStorage.setItem(content, this.article.data.selfText);
-    //  $window.localStorage.setItem(url, this.article.data.url);
      console.log($window.localStorage.getItem(article));
      console.log(paramsService);
      $scope.isArticle = true;
@@ -64,13 +38,13 @@
     $scope.nextPage = function() {
       vm.page += 25;
       var after = vm.reddits[24].data.name;
-      console.log(vm.page);
       $http.get("http://www.reddit.com/r/Articles/new.json?count=" + vm.page + "&after=" + after)
       .then(function FetchNewReddits(returnedData) {
         console.log(returnedData.data.data.children);
         vm.reddits = returnedData.data.data.children;
       },
       function FetchNewRedditsError(error) {
+        alert("Error! See the console");
        console.log(error);
       });
     }
@@ -80,7 +54,7 @@
         console.log(vm.page);
         $http.get("http://www.reddit.com/r/Articles/new.json?count=" + vm.page + "&before=" + before)
         .then(function FetchNewReddits(returnedData) {
-          console.log(returnedData.data.data.children);
+          //console.log(returnedData.data.data.children);
           vm.reddits = returnedData.data.data.children;
         },
         function FetchNewRedditsError(error) {
@@ -89,8 +63,8 @@
     }
   }]);
 
-  app.controller("ArticleCtrl", ['$scope', '$http', '$location', '$window','paramsService',
-  function($scope,$http, $location, $window, paramsService) {
+  app.controller("ArticleCtrl", ['$scope', '$location', '$window','paramsService',
+  function($scope, $location, $window, paramsService) {
     var vm = this;
     vm.article = {};
     vm.msg = "";
@@ -98,18 +72,13 @@
     vm.article = paramsService.getParam();
     console.log(vm.article);
     if(vm.article === undefined) {
-      alert("page reloaded!");
-      console.log($window.localStorage);
-      // vm.local.title = $window.localStorage.getItem(title);
-      // vm.local.content = $window.localStorage.getItem(content);
-      // vm.local.url = $window.localStorage.getItem(url);
+      alert("page reloaded! Back to main view Using a blue button at the bottom of page.");
     }
     else {
       if(!vm.article.data.selfText) {
         vm.msg = "This is an article in external domain. You can see the article using a link:";
       }
     };
-    console.log($scope);
     $scope.backToArticles = function () {
       console.log("Back to main view");
       $location.url('/views/articles-view');
